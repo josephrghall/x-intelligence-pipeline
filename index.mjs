@@ -1,9 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { DatabaseSync } from 'node:sqlite';
 import { TwitterApi } from 'twitter-api-v2';
 
-const root='/opt/x-intelligence', mode=process.argv[2]||'status';
+const root=path.dirname(fileURLToPath(import.meta.url)), mode=process.argv[2]||'status';
 const cfg=JSON.parse(fs.readFileSync(path.join(root,'config.json'),'utf8'));
 fs.mkdirSync(root+'/data',{recursive:true,mode:0o700});
 const db=new DatabaseSync(root+'/data/'+(mode==='demo'?'demo.sqlite':'posts.sqlite'));
