@@ -1,0 +1,11 @@
+[Unit]
+Description=Run X intelligence collector daily
+
+[Timer]
+OnCalendar=*-*-* 17:00:00 UTC
+RandomizedDelaySec=10m
+Persistent=true
+Unit=x-intelligence.service
+
+[Install]
+WantedBy=timers.target
