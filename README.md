@@ -22,3 +22,24 @@ The app starts with a conservative local ceiling of 800 public posts per UTC mon
 Private post data is in data/ and output/, which are Git-ignored. Do not redistribute X content or publish private bookmarks; review X's developer policy and deletion requirements before production or sharing data.
 
 Sources: https://docs.x.com/x-api/getting-started/pricing and https://docs.x.com/x-api/posts/search/introduction
+
+## Daily automation is prepared but disabled
+
+The VPS has a sandboxed systemd one-shot service running as the limited xintel user and a daily UTC timer. The timer is deliberately disabled until the first authenticated run succeeds.
+
+After setting the official X billing-cycle cap, put the token in an owner-only .env file using sudo nano /opt/x-intelligence/.env and chmod 600 /opt/x-intelligence/.env. Then run npm run collect manually and inspect output/latest.md.
+
+If the first collection is successful, enable daily runs with:
+
+    sudo systemctl enable --now x-intelligence.timer
+
+To inspect scheduling/status:
+
+    systemctl status x-intelligence.timer
+    sudo journalctl -u x-intelligence.service -n 40 --no-pager
+
+To pause without losing captured data:
+
+    sudo systemctl disable --now x-intelligence.timer
+
+Daily timer time: 17:00 UTC (subject to a randomized 10-minute delay). The unit reads your token from a root-owned EnvironmentFile without placing it in Git. Private post data and digests stay local.
