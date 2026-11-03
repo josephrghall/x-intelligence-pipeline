@@ -1,0 +1,16 @@
+{
+  "name": "x-intelligence",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --disable-warning=ExperimentalWarning --test",
+    "demo": "node --disable-warning=ExperimentalWarning index.mjs demo",
+    "status": "node --disable-warning=ExperimentalWarning index.mjs status",
+    "collect": "node --disable-warning=ExperimentalWarning --env-file-if-exists=.env index.mjs collect",
+    "digest": "node --disable-warning=ExperimentalWarning index.mjs digest"
+  },
+  "dependencies": {
+    "twitter-api-v2": "^1.31.0"
+  }
+}

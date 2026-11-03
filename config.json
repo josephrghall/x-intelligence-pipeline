@@ -1,0 +1,53 @@
+{
+  "monthlyLimit": 800,
+  "pageSize": 10,
+  "githubChecks": 5,
+  "queries": [
+    {
+      "name": "ai-agents",
+      "query": "(\"open source\" OR opensource) (\"AI agent\" OR agents) -is:retweet"
+    },
+    {
+      "name": "repositories",
+      "query": "(github.com OR GitHub) (AI OR automation) -is:retweet"
+    },
+    {
+      "name": "local-knowledge",
+      "query": "(\"local-first\" OR \"second brain\" OR obsidian) -is:retweet"
+    }
+  ],
+  "topics": {
+    "agents": [
+      "agent",
+      "mcp",
+      "orchestration",
+      "codex",
+      "llm"
+    ],
+    "knowledge": [
+      "obsidian",
+      "local-first",
+      "sqlite",
+      "memory",
+      "markdown"
+    ],
+    "intelligence": [
+      "osint",
+      "monitor",
+      "geopolitical",
+      "intelligence"
+    ],
+    "automation": [
+      "workflow",
+      "scraper",
+      "crawlee",
+      "automation"
+    ],
+    "markets": [
+      "quant",
+      "market",
+      "trading",
+      "finance"
+    ]
+  }
+}
